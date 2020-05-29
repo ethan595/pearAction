@@ -2,6 +2,11 @@
 # 本脚本工作目录必须是git仓库的主目录
 
 # Add Some Package
+cd package
+git clone  https://github.com/PearInc/openwrt_docker.git
+mv openwrt_docker docker
+cd ../
+
 
 mkdir -p package/custom
 cd package/custom

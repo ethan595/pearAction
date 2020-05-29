@@ -1,7 +1,7 @@
 #!/bin/bash
 # 本脚本工作目录必须是git仓库的主目录
 
-# get commit 
+# get specified commit 
 git checkout 8f9bc86de1896cc1ad9f013e923b9aa5ea3bd7c7 -b a
 curl -fsSL https://raw.githubusercontent.com/PearInc/pearAction/master/x86_64/docker_tv_musl.config > .config 
 
