@@ -28,16 +28,15 @@ jobs:
         sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
     - name: Clone source and install
       run: |
-        git clone https://github.com/linhailan/lede
+        git clone  https://github.com/coolsnowwolf/lede.git
         cd lede
         ./scripts/feeds update -a
         ./scripts/feeds install -a
     - name: Download and Load custom configuration
       run: |
         cd lede
-        curl -fsSL https://raw.githubusercontent.com/PearInc/pearAction/master/x86_64/docker_tv_musl.config > .config 
         bash <(curl -fsSL https://raw.githubusercontent.com/PearInc/pearAction/master/x86_64/diy.sh )
-        
+        ./scripts/feeds update -a
         ./scripts/feeds install -a
         make defconfig
     - name: Download package
