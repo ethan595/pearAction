@@ -1,8 +1,11 @@
 #!/bin/bash
 # 本脚本工作目录必须是git仓库的主目录
 
-# Add Some Package
+# get commit 
+git checkout 8f9bc86de1896cc1ad9f013e923b9aa5ea3bd7c7 -b a
+curl -fsSL https://raw.githubusercontent.com/PearInc/pearAction/master/x86_64/docker_tv_musl.config > .config 
 
+# Add Some Package
 cd package
 git clone  https://github.com/PearInc/openwrt_docker.git
 mv openwrt_docker docker
