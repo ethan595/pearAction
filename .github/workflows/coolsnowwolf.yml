@@ -17,7 +17,7 @@ jobs:
       env:
           DEBIAN_FRONTEND: noninteractive
       run: |
-        sudo swapoff /swapfile
+#        sudo swapoff /swapfile
         sudo rm -rf /swapfile /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         docker rmi `docker images -q`
         sudo -E apt-get -qq update
@@ -35,7 +35,7 @@ jobs:
         ./scripts/feeds install -a
     - name: Download and Load custom configuration
       run: |
-        cd lede
+#        cd lede
         curl -fsSL https://raw.githubusercontent.com/PearInc/pearAction/master/coolsnowwolf/docker_tv_musl.config > .config 
         bash <(curl -fsSL https://raw.githubusercontent.com/PearInc/pearAction/master/coolsnowwolf/diy.sh )
         
@@ -43,7 +43,7 @@ jobs:
         make defconfig
     - name: Download package
       run: |
-        cd lede
+  #      cd lede
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
@@ -60,7 +60,7 @@ jobs:
       if: failure()
       run: |
         sudo df -h
-        cd lede
+#        cd lede
         make -j1 V=s
         sudo df -h
     - name: Upload entire bin directory
@@ -72,7 +72,7 @@ jobs:
     - name: Setup Upload dictionary
       if: always()
       run: |
-        cd lede/bin/targets/*/*
+        cd ./bin/targets/*/*
         rm -rf packages
         echo "::set-env name=FIRMWARE::$(pwd)"
     - name: Only Upload firmware (Without packages)
