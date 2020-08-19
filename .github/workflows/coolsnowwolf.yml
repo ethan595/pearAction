@@ -34,6 +34,7 @@ jobs:
         ./scripts/feeds install -a
     - name: Download and Load custom configuration
       run: |
+        cd lede
         curl -fsSL https://raw.githubusercontent.com/PearInc/pearAction/master/coolsnowwolf/docker_tv_musl.config > .config 
         bash <(curl -fsSL https://raw.githubusercontent.com/PearInc/pearAction/master/coolsnowwolf/diy.sh )
         
