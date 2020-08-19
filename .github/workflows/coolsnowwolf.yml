@@ -8,6 +8,7 @@ on:
   schedule:
         - cron: 0 2 * * *
 
+
 jobs:
   coolsnowwolf_x86:
     runs-on: ubuntu-latest
