@@ -8,7 +8,6 @@ on:
   schedule:
         - cron: 0 2 * * *
 
-
 jobs:
   coolsnowwolf_x86:
     runs-on: ubuntu-latest
@@ -42,6 +41,7 @@ jobs:
         make defconfig
     - name: Download package
       run: |
+        cd lede
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
@@ -58,6 +58,7 @@ jobs:
       if: failure()
       run: |
         sudo df -h
+        cd lede
         make -j1 V=s
         sudo df -h
     - name: Upload entire bin directory
@@ -69,7 +70,7 @@ jobs:
     - name: Setup Upload dictionary
       if: always()
       run: |
-        cd ./bin/targets/*/*
+        cd lede/bin/targets/*/*
         rm -rf packages
         echo "::set-env name=FIRMWARE::$(pwd)"
     - name: Only Upload firmware (Without packages)
